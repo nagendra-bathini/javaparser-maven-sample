@@ -53,7 +53,20 @@ jobs:
           tags: |
             ${{ secrets.DOCKER_USERNAME }}/githubaction:latest
             ${{ secrets.DOCKER_USERNAME }}/githubaction:${{ github.run_number }}
-            run: echo "Docker image was pushed to registry"
+        # 7️⃣ Debugging: Print push info
+      - name: Debug - Print Docker push details
+        run: |
+          echo "✅ Docker image push completed!"
+          echo "Pushed image tags:"
+          echo " - ${{ secrets.DOCKER_USERNAME }}/githubaction:latest"
+          echo " - ${{ secrets.DOCKER_USERNAME }}/githubaction:${{ github.run_number }}"
+          echo ""
+          echo "🔍 Checking local Docker images:"
+          docker images | grep githubaction || echo "No local images found"
+          echo ""
+          echo "🔍 Pulling image from Docker Hub to verify it exists:"
+          docker pull ${{ secrets.DOCKER_USERNAME }}/githubaction:latest
+          echo "✅ Verification completed successfully!"
 
       
 # (Optional) Verify image
