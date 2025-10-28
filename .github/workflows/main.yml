@@ -58,8 +58,8 @@ jobs:
         run: |
           echo "✅ Docker image push completed!"
           echo "Pushed image tags:"
-          echo " - ${{ secrets.DOCKER_USERNAME }}/githubaction:latest"
-          echo " - ${{ secrets.DOCKER_USERNAME }}/githubaction:${{ github.run_number }}"
+          echo " - ${{ secrets.DOCKER_USERNAME }}/docker_images:0.2"
+          echo " - ${{ secrets.DOCKER_USERNAME }}/docker_images:${{ github.run_number }}"
           echo ""
           echo "🔍 Checking local Docker images:"
           docker images | grep githubaction || echo "No local images found"
