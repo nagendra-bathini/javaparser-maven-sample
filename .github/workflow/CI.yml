@@ -1,3 +1,4 @@
+#This yml file build the java-maven project, docker image, and push into the docker registry.
 name: Maven Build and Docker Push
 
 on:
