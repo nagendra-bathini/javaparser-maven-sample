@@ -35,6 +35,12 @@ jobs:
       # 4️⃣ Build with Maven
       - name: Build with Maven
         run: mvn -B clean package --file pom.xml
+        
+      # 🧩 Fix: Move the built JAR to the correct location for Docker
+      - name: Move JAR for Docker build
+        run: |
+          mkdir -p target
+          cp javaparser-maven-sample/target/javaparser-maven-sample-1.0-SNAPSHOT.jar target/  
 
       # 5️⃣ Log in to Docker registry
       # Set your secrets in: Settings → Secrets and variables → Actions
