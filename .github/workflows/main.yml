@@ -39,8 +39,11 @@ jobs:
       # 🧩 Fix: Move the built JAR to the correct location for Docker
       - name: Move JAR for Docker build
         run: |
-          mkdir -p target
-          cp javaparser-maven-sample/target/javaparser-maven-sample-1.0-SNAPSHOT.jar target/  
+            echo "Searching for built JAR..."
+            JAR_PATH=$(find . -path "*/target/*.jar" -type f | head -n 1)
+            echo "Found JAR: $JAR_PATH"
+            mkdir -p target
+            cp "$JAR_PATH" target/app.jar
 
       # 5️⃣ Log in to Docker registry
       # Set your secrets in: Settings → Secrets and variables → Actions
