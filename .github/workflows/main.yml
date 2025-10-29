@@ -51,8 +51,8 @@ jobs:
           context: .
           push: true
           tags: |
-            ${{ secrets.DOCKER_USERNAME }}/githubaction:latest
-            ${{ secrets.DOCKER_USERNAME }}/githubaction:${{ github.run_number }}
+            ${{ secrets.DOCKER_USERNAME }}/docker_images:0.2
+            ${{ secrets.DOCKER_USERNAME }}/docker_images:${{ github.run_number }}
         # 7️⃣ Debugging: Print push info
       - name: Debug - Print Docker push details
         run: |
@@ -62,10 +62,10 @@ jobs:
           echo " - ${{ secrets.DOCKER_USERNAME }}/docker_images:${{ github.run_number }}"
           echo ""
           echo "🔍 Checking local Docker images:"
-          docker images | grep githubaction || echo "No local images found"
+          docker images | grep docker_images || echo "No local images found"
           echo ""
           echo "🔍 Pulling image from Docker Hub to verify it exists:"
-          docker pull ${{ secrets.DOCKER_USERNAME }}/githubaction:latest
+          docker pull ${{ secrets.DOCKER_USERNAME }}/docker_images:0.2
           echo "✅ Verification completed successfully!"
 
       
