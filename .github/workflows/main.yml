@@ -59,7 +59,7 @@ jobs:
 
   upload_artifacts:
     runs-on: ubuntu-latest
-    needs: security-check
+    needs: compile
     steps:
        #Upload artifact
     - name: Upload JAR artifact
